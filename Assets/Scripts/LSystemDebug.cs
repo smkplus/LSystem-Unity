@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LSystem : MonoBehaviour {
+public class LSystemDebug : MonoBehaviour {
 private string axiom = "F";
 private string currentString;
 private Dictionary<char,string> rules = new Dictionary<char,string>();
@@ -26,7 +26,7 @@ public class TransformInfo{
 }
 
 IEnumerator Generate(){
-   // length /= 2.0f;
+    length /= 2.0f;
     string newString = "";
     for (int i = 0; i < currentString.Length; i++)
     {
@@ -41,16 +41,16 @@ IEnumerator Generate(){
     Debug.Log(currentString);
     for (int i = 0; i < currentString.Length; i++)
     {
-            yield return null;
+        yield return null;
 
         if(currentString[i] == 'F'){
             Vector3 InitialPos = transform.position;
-            transform.Translate(Vector3.forward * length);
+            transform.Translate(Vector3.up * length);
             Debug.DrawLine(InitialPos,transform.position,Color.white,10000f,false);
         }else if(currentString[i] == '+'){
-            transform.Rotate(Vector3.up * angle);
+            transform.Rotate(Vector3.forward * angle);
         }else if(currentString[i] == '-'){
-            transform.Rotate(Vector3.up * -angle);
+            transform.Rotate(Vector3.forward * -angle);
         }else if(currentString[i] == '['){
            TransformInfo ti = new TransformInfo();
            ti.rotation = transform.rotation;
