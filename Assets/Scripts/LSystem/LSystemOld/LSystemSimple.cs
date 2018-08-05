@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LSystemDebug : MonoBehaviour {
+public class LSystemSimple : MonoBehaviour {
 private string axiom = "F";
 private string currentString;
 private Dictionary<char,string> rules = new Dictionary<char,string>();
@@ -31,7 +31,7 @@ IEnumerator Generate(){
     for (int i = 0; i < currentString.Length; i++)
     {
         if(rules.ContainsKey(currentString[i])){
-
+    
         newString += rules[currentString[i]];
         }else{
         newString += currentString[i];  
